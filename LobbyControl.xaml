@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Overwatch.LobbyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800" Foreground="White">
+    <Grid>
+        <TextBlock Text="Friends List" FontSize="18" HorizontalAlignment="Left" Margin="7,1,0,0" VerticalAlignment="Top"></TextBlock>
+        <TextBox Name="filterBox" IsTabStop="False" Tag="Filter Friends List" HorizontalAlignment="Left" Height="23" Margin="147,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" TextChanged="filterBox_TextChanged">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2"/>
+                        <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1" IsTabStop="False">
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="Foreground" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                            <Setter Property="Foreground" Value="LightGray"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox >
+                    </Grid>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <Border Margin="5,30,0,5"  Width="300" HorizontalAlignment="Left"  CornerRadius="2" BorderThickness="0">
+            <ItemsControl Name="userList" Margin="0,0,0,25" IsTabStop="False" >
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="{x:Type ItemsControl}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" IsTabStop="False">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="UserControl">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+        </Border>
+        <TextBlock Text="Finished Games Log" FontSize="18" HorizontalAlignment="Left" Margin="312,1,0,0" VerticalAlignment="Top"></TextBlock>
+        <Border Margin="310,30,5,5" CornerRadius="2" BorderThickness="2" BorderBrush="#43484c">
+            <ItemsControl Name="finishedGamesLog" IsTabStop="False">
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="{x:Type ItemsControl}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" IsTabStop="False">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
+        </Border>
+        <CheckBox Name="logAllUsersBox" Content="Log All Users" FontSize="16" IsTabStop="False" HorizontalAlignment="Left" Margin="196,0,0,5" VerticalAlignment="Bottom" Foreground="White"></CheckBox>
+    </Grid>
+</UserControl>

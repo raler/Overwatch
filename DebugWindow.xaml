@@ -1,0 +1,9 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Overwatch" x:Class="Overwatch.DebugWindow"
+        Title="Overwatch Debug Console" Height="400" Width="600" WindowStyle="ToolWindow" Icon="Resources/overwatch.ico" ShowInTaskbar="False" Closing="Window_Closing_1">
+    <Grid>
+        <local:DebugConsole x:Name="debugCons"/>
+    </Grid>
+</Window>

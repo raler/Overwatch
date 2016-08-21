@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Overwatch.FriendsListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="70" Height="66" d:DesignWidth="230" Margin="1">
+    <Border BorderBrush="Gray" BorderThickness="2,1" CornerRadius="2">
+        <Grid Background="#43484c">
+            <Border Name="iconBorder" Margin="3,1,0,1" Width="60" Height="60"  HorizontalAlignment="Left" BorderBrush="#f99e1a" BorderThickness="2" CornerRadius="2" Background="Black">
+                <Image  Name="iconImage" Stretch="UniformToFill" Width="58" Height="58" HorizontalAlignment="Left" Source="Resources/overwatch.ico" />
+            </Border>
+            <Label Name="summonerNameLabel" Foreground="White" Content="Summoner Name" Margin="65,-2,1,0" FontSize="17">
+                <Label.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.8"/>
+                </Label.Effect>
+            </Label>
+            <Label Name="summonerStatusLabel" Foreground="White" Content="Offline" Margin="65,19,1,0" FontSize="14">
+                <Label.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.8"/>
+                </Label.Effect>
+            </Label>
+            <CheckBox Name="recordGamesBox" Foreground="White" IsTabStop="False" Content="Log Games"  VerticalAlignment="Bottom" Margin="70,0,0,3" HorizontalAlignment="Left" Checked="recordGamesBox_Checked" Unchecked="recordGamesBox_Unchecked">
+                <CheckBox.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.8"/>
+                </CheckBox.Effect>
+            </CheckBox>
+        </Grid>
+    </Border>
+</UserControl>
